@@ -1,0 +1,17 @@
+/ h1 Welcome
+/ h2 (By Stephen Davis)
+p Thanks for coming to this website!
+p I blog about web development, music, and what's going on in my life.
+.tiles.cf
+  - @menu_items.drop(1).each do |menu_item|
+    a.tile[href="#{menu_item.path}" class="#{menu_item.path[1..-1]}"]
+      - if menu_item.path[1..-1] == 'blog'
+        .newest-post
+          strong
+            = @newest_post.title
+          '
+          == truncate(strip_tags(markdown(@newest_post.body)), 60)
+      / span.after
+      .tile-inner
+        h2.tile-title = menu_item.text
+        p = menu_item.description

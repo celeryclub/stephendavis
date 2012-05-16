@@ -1,0 +1,12 @@
+article.post[id="post-#{@post.id}"]
+  small.published Published #{@post.published.strftime("%B %e, %Y")}
+  == markdown(@post.body)
+.post-nav.cf
+  - if @older_post
+    .older: .inner
+      small &larr; Older
+      a[href="/blog/#{@older_post.slug}"] = @older_post.title
+  - if @newer_post
+    .newer: .inner
+      small Newer &rarr;
+      a[href="/blog/#{@newer_post.slug}"] = @newer_post.title

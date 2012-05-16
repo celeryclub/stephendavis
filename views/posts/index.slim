@@ -1,0 +1,10 @@
+/ .full-img: img[src='/img/blog.jpg']
+
+small.archive-link: a[href='/blog/archive'] Month archive
+- @posts.each do |post|
+  article.post[id="post-#{post.id}"]
+    h2
+      a[href=('/blog/'+post.slug)] = post.title
+      / '
+      / small.published #{post.published.strftime("%b %e")}
+    == markdown(post.body)
