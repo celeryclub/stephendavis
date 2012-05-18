@@ -8,11 +8,11 @@ require 'rack/rewrite'
 use Rack::Rewrite do
 
   # Redirect to www
-  # r301 %r{.*},  Proc.new {|path, rack_env| "http://www.#{rack_env['SERVER_NAME']}#{path}" },
-  #   :if => Proc.new {|rack_env| ! (rack_env['SERVER_NAME'] =~ /www\./i)}
+  r301 %r{.*},  Proc.new { |path, rack_env| "http://www.#{rack_env['SERVER_NAME']}#{path}" },
+    :if => Proc.new { |rack_env| ! (rack_env['SERVER_NAME'] =~ /www\./i) }
 
-  # r301 %r{.*}, 'http://mynewdomain.com$&', :if => Proc.new {|rack_env|
-  #   rack_env['SERVER_NAME'] != 'mynewdomain.com'
+  # r301 %r{.*}, 'http://stephendavis.com$&', :if => Proc.new {|rack_env|
+  #   rack_env['SERVER_NAME'] != 'stephendavis.com'
   # }
 
   # Strip trailing slashes
