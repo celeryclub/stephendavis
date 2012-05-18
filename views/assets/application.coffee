@@ -2,6 +2,8 @@ $ ->
 
   # transition_speed = 300
 
+  $('.post').fitVids()
+
   $('.datepicker').datepicker({ dateFormat: 'yy-mm-dd' })
 
   dlp = strip_trailing_slash(document.location.pathname)
@@ -37,8 +39,8 @@ $ ->
       # console.log key_count
   )
 
-  size_tiles()
-  $(window).on('resize', size_tiles)
+  # size_tiles()
+  # $(window).on('resize', size_tiles)
 
   lastfm_recent()
   # setInterval(lastfm_recent(), 5000)
@@ -52,9 +54,9 @@ strip_trailing_slash = (str) ->
     str.substr(0, str.length - 1)
   str
 
-size_tiles = ->
-  # console.log $('.tile').width()
-  $('.tile').height($('.tile').width());
+# size_tiles = ->
+#   # console.log $('.tile').width()
+#   $('.tile').height($('.tile').width());
 
 lastfm_recent = ->
   api_key = '3b542380a2728ae170a8b50184d9eb40'

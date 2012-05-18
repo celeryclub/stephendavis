@@ -4,8 +4,7 @@ require 'slim'
 require 'sass'
 require 'coffee-script'
 # require 'uglifier'
-# require 'sinatra/flash'
-# require 'rack-flash'
+# require 'rack/flash'
 # require 'sinatra/assetpack'
 require 'rdiscount'
 require 'nokogiri'
@@ -13,9 +12,6 @@ require 'nokogiri'
 
 
 # TODO:
-# * Logo
-# * Finish homepage
-# * Add favicon
 # * New 'Projects' header image
 # * add full text search
 # * reload Last.fm dynamically
@@ -45,8 +41,8 @@ before do
   @menu_items = [
     MenuItem.new('/','Home',''),
     MenuItem.new('/blog','Blog','Read some pretty good articles.'),
-    MenuItem.new('/projects','Projects',"See what I've been working on."),
-    MenuItem.new('/about','About','Learn a little bit about my life.')
+    MenuItem.new('/projects','Projects',"See what I've been up to."),
+    MenuItem.new('/about','About','Learn a little bit about me.')
   ]
 end
 
