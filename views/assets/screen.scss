@@ -227,11 +227,13 @@ nav.main {
 .track:last-child {
   // margin-bottom: 0;
 }
-.track .track-cover {
-  // float: left;
-  // display: none;
+.track-cover {
+  width: 34px;
+  height: 34px;
   float: left;
-  // margin-right: 0.5em;
+}
+.track-cover.duplicate {
+  opacity: 0.4;
 }
 .track span,
 .track small {
@@ -449,6 +451,10 @@ article h2 a {
     padding-right: 0.8em;
   }
 }
+.comments {
+  margin-top: 2em;
+  text-align: center;
+}
 .archive {
   padding-left: 0.6em;
   // margin-left: 0;
@@ -607,7 +613,7 @@ textarea {
     width: 30%;
     padding-right: 5%;
   }
-  .widget.links {
+  .widget:last-child {
     padding: 0;
   }
   footer {
@@ -656,6 +662,15 @@ textarea {
     width: auto;
     float: none;
   }
+  .widget {
+    float: none;
+    // background: red;
+    width: auto;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
 }
 
 

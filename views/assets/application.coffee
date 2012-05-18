@@ -77,12 +77,12 @@ lastfm_recent = ->
         # console.log i
         if i < limit
           # classes = 'track'
-          htm = "<div class='track'>"
+          htm = "<div class='track'><img class='track-cover"
           current_img = track.image[0]['#text']
-          unless current_img == prev_img
-            htm += "<img class='track-cover' src='#{current_img}'>"
+          if current_img == prev_img
+            htm += " duplicate"
           prev_img = current_img
-          htm += "<span class='name'>#{track.name}</span><small class='artist'>#{track.artist['#text']}</small>"
+          htm += "' src='#{current_img}'><span class='name'>#{track.name}</span><small class='artist'>#{track.artist['#text']}</small>"
           htm += "</div>"
           # htm += "<li>Name: #{track.name} / Artist: #{track.artist['#text']} / Album: #{track.album['#text']} / Image: #{track.image[3]['#text']}</li>"
           $('.lastfm').find('.tracks').append(htm) #.hide().slideDown(1000)

@@ -6,5 +6,5 @@ small.archive-link: a[href='/blog/archive'] Month archive
     h2
       a[href=('/blog/'+post.slug)] = post.title
       / '
-      / small.published #{post.published.strftime("%b %e")}
+      / small.published #{post.published.strftime('%b %e')}
     == markdown(post.body)
