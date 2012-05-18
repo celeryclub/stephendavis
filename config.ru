@@ -7,19 +7,22 @@ run Sinatra::Application
 require 'rack/rewrite'
 use Rack::Rewrite do
 
+  # Redirect from Heroku subdomain
+  r301 %r{.*}, 'http://www.stephendavis.com$&', :if => Proc.new {|rack_env|
+    rack_env['SERVER_NAME'] == 'stephendavis.herokuapp.com'
+  }
+
   # Redirect to www
   r301 %r{.*},  Proc.new { |path, rack_env| "http://www.#{rack_env['SERVER_NAME']}#{path}" },
     :if => Proc.new { |rack_env| ! (rack_env['SERVER_NAME'] =~ /www\./i) }
-
-  # r301 %r{.*}, 'http://stephendavis.com$&', :if => Proc.new {|rack_env|
-  #   rack_env['SERVER_NAME'] != 'stephendavis.com'
-  # }
 
   # Strip trailing slashes
   r301 %r{^/(.*)/$}, '/$1'
 
   # WP and other misc
   r301 %r{^/blog/category/.*}, '/blog'
+  r301 %r{^/blog/author/.*}, '/blog'
+  r301 %r{^/blog/page/.*}, '/blog/archive'
   r301 %r{^/blog/(19|20)\d\d.*}, '/blog/archive'
   # r301 %r{/users(.*)}, '/people$1'
   r301 '/blog/new-album-released', '/blog/new-album-out'
