@@ -73,10 +73,12 @@ helpers do
     words[0..(length-1)].join(' ') + (words.length > length ? end_string : '')
   end
   def protected!
-    @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-    unless @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == ['stephen', 'fland3rs']
-      response['WWW-Authenticate'] = %(Basic realm='Administration')
-      throw(:halt, [401, "Not authorized\n"])
+    if ENV['RACK_ENV'] == 'production'
+      @auth ||=  Rack::Auth::Basic::Request.new(request.env)
+      unless @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == [ENV['ADMIN_USERNAME'], ENV['ADMIN_PASSWORD']]
+        response['WWW-Authenticate'] = %(Basic realm='Administration')
+        throw(:halt, [401, "Not authorized\n"])
+      end
     end
   end
 end

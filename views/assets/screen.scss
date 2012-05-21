@@ -1,13 +1,16 @@
 // Variables
 // --------------------------------
-// $green: #91A217;
 $white: #FBFBFB;
-// $orange: #FF7300;
+$darkgrey: #333;
 $red: #B10;
+$darkred: darken($red, 10%);
 // $blue: #207FB9;
 $blue: #0066BB;
-$orange: #F48300;
+$darkblue: darken($blue, 15%);
+// $orange: #FF7300;
+// $orange: #F48300;
 // $green: #393;
+// $green: #91A217;
 $green: #40BF40;
 
 // Mixins
@@ -27,31 +30,25 @@ $green: #40BF40;
           transform: $transform;
 }
 
-// Selection
+// General
 // --------------------------------
 ::-moz-selection { background: rgba(0,102,187,0.75); color: #fff; text-shadow: none; }
 ::selection { background: rgba(0,102,187,0.75); color: #fff; text-shadow: none; }
-
-// General
-// --------------------------------
 body {
   background: $white url("/img/light_wool.png") top center;
   color: #222;
-  font-family: "PT Sans", sans-serif;
+  font-family: "PT Sans", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   font-size: 16px;
 }
 h1, h2, h3 {
   font-weight: 400;
   color: $blue;
   line-height: 0.85em;
-  // @include transition(font-size, 0.2s);
 }
-h1 a, h2 a, h3 a {
-  color: $blue;
-}
+h1 a, h2 a, h3 a { color: $blue; }
 .logo,
 h1, h2 {
-  color: #333;
+  color: $darkgrey;
   font-family: "Crete Round", serif;
   clear: left;
 }
@@ -59,31 +56,13 @@ h1 {
   font-size: 65px;
   margin: 0;
 }
-h2, h3, h4 {
-  margin: 0.8em 0 0;
-}
-h2, h3 {
-  font-size: 22px;
-}
-h2 {
-  line-height: 1.1em;
-  // font-size: 1.2em;
-}
-h3 {
-  font-family: "PT Sans Narrow", sans-serif;
-}
-h4 {}
-ul {
-  padding-left: 1.6em;
-}
+h2, h3, h4 { margin: 0.8em 0 0; }
+h2, h3 { font-size: 22px; }
+h2 { line-height: 1.1em; }
+h3 { font-family: "PT Sans Narrow", Impact, "Haettenschweiler", "Arial Narrow Bold", sans-serif; }
+ul { padding-left: 1.6em; }
 p,
-blockquote {
-  margin: 0.8em 0;
-  // &:first-child {
-  //   margin-top: 0;
-  // }
-}
-// h2 + p { margin-top: 0.3em; }
+blockquote { margin: 0.8em 0; }
 h3 + p,
 h4 + p,
 h3 + ul,
@@ -97,10 +76,6 @@ ul ol {
   margin: 0;
 }
 code {
-  // color: #000;
-  // color: lighten($blue, 35%);
-  // color: lighten($red, 5%);
-  // color: lighten($green, 10%);
   color: $green;
 }
 hr {
@@ -111,11 +86,7 @@ hr {
 a {
   // padding: 0 0.1em;
   // margin: 0 -0.1em;
-  // color: #4F0039;
-  color: darken($blue, 15%);
-  // color: #000;
-  // background: #FFFEBF;
-  // text-decoration: none;
+  color: $darkblue;
   // @include transition(background, 0.2s);
   &:hover {
     color: $white;
@@ -127,23 +98,16 @@ blockquote {
   background: #F6F6F6;
   border-top: 1px dashed #CCC;
   border-bottom: 1px dashed #CCC;
-  // font-size: 1.1em;
   color: $blue;
-  // margin: 1em 0;
-  // margin: 0 0 1em;
-  // margin: 0;
   padding: 0 0.8em;
 }
 blockquote h2,
 blockquote h3,
 blockquote h4 {
-  // color: $orange;
   text-align: center;
   margin: 0.5em 0;
 }
-img {
-  background: url("/img/checker.gif");
-}
+img { background: url("/img/checker.gif"); }
 
 // Positioning
 // --------------------------------
@@ -159,7 +123,6 @@ footer p {
   width: 70%;
   float: right;
 }
-// .logo,
 .secondary {
   float: left;
   width: 28%;
@@ -169,15 +132,10 @@ footer p {
 // --------------------------------
 header {
   clear: both;
-  // background: red;
   position: relative;
   margin-bottom: 1.4em;
 }
 .logo {
-  // margin-right: 2%;
-  // margin-right: 2%;
-  // background: gainsboro;
-  // font-variant: small-caps;
   text-transform: lowercase;
   color: $white;
   background: $blue;
@@ -191,121 +149,57 @@ header {
   left: 0;
   bottom: 0;
 }
-// .intro {
-//   // position: relative;
-//   // background: #290;
-//   // min-height: 180px;
-// }
 nav.main {
-  // margin: 0 0 2em;
   padding: 2em 0 0.4em;
   position: relative;
   z-index: 100;
   font-size: 1.05em;
-  // padding-left: 2%;
-  // float: right;
-  // right: 0;
-  // width: 68%;
-  // background: rgba(0,0,0,0.1)
-  // background: orange;
-  // border-bottom: 1px double blue;
   ul {
     padding: 0;
     margin: 0;
   }
-  li {
-    display: inline;
-    // background: blue;
-  }
+  li { display: inline; }
   a {
     display: inline-block;
     text-decoration: none;
-    // background: red;
   }
 }
 .break { display: none; }
-.seperator {
-  color: #CCC;
-}
+.seperator { color: #CCC; }
 .page-title {
-  // position: absolute;
   position: relative;
   bottom: -0.08em;
-  // right: 0;
 }
 
 // Main
 // --------------------------------
 #main {}
-.primary {
-  // width: 68%;
-  // float: right;
-  // background: lightblue;
-  // @include transition(width, 0.2s);
-}
 
 // Sidebar
 // --------------------------------
-.secondary {
-  // width: 29%;
-  // float: left;
-  // background: lightyellow;
-}
-.widget {
-  margin-bottom: 1em;
-  // background: red;
-}
-.widget-title {
-  margin: 0 0 0.5em;
-}
-.widget ul {
-  margin: 0;
-}
-.lastfm {
-  // background: yellow;
-}
-.track {
-  // width: 100%;
-  margin-bottom: 0.3em;
-  // background: $orange;
-  // padding-bottom: 0.2em;
-  // clear: both;
-}
-.track:last-child {
-  // margin-bottom: 0;
-}
+.widget { margin-bottom: 1em; }
+.widget-title { margin: 0 0 0.5em; }
+.widget ul { margin: 0; }
+.track { margin-bottom: 0.3em; }
 .track-cover {
   width: 34px;
   height: 34px;
   float: left;
 }
-.track-cover.duplicate {
-  opacity: 0.4;
-}
+.track-cover.duplicate { opacity: 0.4; }
 .track span,
 .track small {
   display: block;
   margin-left: 40px;
-  // float: left;
-  // clear: left;
-  // background: red;
-}
-.track span.name {
-  // font-weight: bold;
 }
 
 // Footer
 // --------------------------------
-footer {
-  color: #999;
-}
+footer { color: #999; }
 .colophon {
-  // letter-spacing: -1px;
   font-size: 0.8em;
   clear: both;
   margin: 2em 0;
-  // background: green;
-  // text-align: center;
 }
 
 // Home Page
@@ -319,78 +213,50 @@ footer {
   position: relative;
   width: 30%;
   display: block;
-  // background: #CCC;
-  // background: orange;
   // box-shadow: inset 0 0 20px 2px rgba(0,0,0,0.5);
   padding: 0;
   margin: 0;
   margin-right: 5%;
   position: relative;
   overflow: hidden;
-  color: #333;
+  color: $darkgrey;
   &:hover {
-    // box-shadow: inset 0 0 10px 2px rgba(0,0,0,0.5);
     color: #000;
     background: none;
   }
   p {
-    // margin-top: 5em;
-    // padding: 0 2em;
     position: relative;
     margin: 0.4em 0;
   }
 }
-.tile.about {
-  margin: 0;
-}
+.tile.about { margin: 0; }
 .tile-background {
-  // color: red;
-  // padding: 1em;
   font-size: 0.8em;
-  color: darken($blue, 15%);
-  // line-height: 1.3em;
+  color: $darkblue;
   opacity: 0.85;
   text-align: justify;
   width: 100%;
-  // height: 100%;
   overflow: hidden;
   height: 120px;
   border-bottom: 2px solid transparent;
 }
-.tile:hover .tile-background {
-  border-color: #444;
-}
-.tile.projects .tile-background {
-  background: url("/img/hacking-guide.jpg") -160px center;
-}
-.tile.about .tile-background {
-  background: url("/img/im-on-a-lion.jpg") -440px -50px;
-}
-.tile.blog .tile-background {
-  // display: none;
-}
+.tile:hover .tile-background { border-color: #444; }
+.tile.projects .tile-background { background: url("/img/hacking-guide.jpg") -160px center; }
+.tile.about .tile-background { background: url("/img/im-on-a-lion.jpg") -440px -50px; }
 .tile-inner {
   background: rgba(255,255,255,0.65);
   @include transition(background, 0.2s);
-  // height: 100%;
   position: absolute;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
   padding: 1em 0;
-
-  
 }
-.tile:hover .tile-inner {
-  background: rgba(255,255,255,0.75);
-}
+.tile:hover .tile-inner { background: rgba(255,255,255,0.75); }
 .tile-title {
   text-align: center;
   color: #000;
-  // display: inline-block;
-  // margin: 0 auto;
-  // background: rgba(255,255,255,0.75);
   margin: 0;
   padding: 0.5em 0;
 }
@@ -407,14 +273,9 @@ footer {
 
 // Blog
 // --------------------------------
-article {
-  margin-bottom: 2em;
-}
+article { margin-bottom: 2em; }
 article a {
   background: #FFFEBF;
-  // display: inline-block;
-  // color: #000;
-  // text-decoration: none;
   &:hover {
     background: #FFFB00;
     color: #000;
@@ -427,21 +288,14 @@ article h2 a {
     background: #444;
   }
 }
-.archive-link {
-  // text-align: right;
-  display: block;
-  // margin-top: -1.3em;
-}
+.archive-link { display: block; }
 .published,
 .artist {
-  // display: block;
-  // text-align: right;
   color: #999;
   font-style: italic;
 }
 .post {
   position: relative;
-  // background: blue;
   &:after {
     display: block;
     content: "";
@@ -453,31 +307,16 @@ article h2 a {
     top: 0;
     right: 0;
   }
-  // &:hover .after {
-  //   bottom: -20%;
-  //   right: -20%;
-  // }
 }
-
 .post img {
   float: left;
   margin: 0 1em 0.5em 0;
   max-width: 60%;
 }
-
-.post-nav {
-  // margin-top: 2em;
-  clear: both;
-}
+.post-nav { clear: both; }
+.post-nav small { display: block; }
 .older,
-.newer {
-  width: 50%;
-  // background: blue;
-}
-.older small,
-.newer small {
-  display: block;
-}
+.newer { width: 50%; }
 .older {
   float: left;
   .inner {
@@ -497,24 +336,15 @@ article h2 a {
   margin-top: 2em;
   text-align: center;
 }
-.archive {
-  padding-left: 0.6em;
-  // margin-left: 0;
-}
+.archive { padding-left: 0.6em; }
 .archive li {
   text-overflow: ellipsis;
-  // display: block;
   list-style-position: inside;
-  // width: 5em;
   white-space: nowrap;
   overflow: hidden;
 }
-.archive a {
-  text-decoration: none;
-}
-.archive a strong {
-  text-decoration: underline;
-}
+.archive a { text-decoration: none; }
+.archive a strong { text-decoration: underline; }
 
 
 // Form Elements
@@ -563,7 +393,7 @@ textarea {
 
 .errors {
   background: $red;
-  color: #FFF;
+  color: $white;
   margin-bottom: 1em;
   padding: 0.5em;
   display: inline-block;
@@ -578,22 +408,13 @@ textarea {
 .full-img img {
   display: block;
 }
-// .half-width {
-//   width: 50%;
-//   float: left;
-// }
-// .third-width {
-//   width: 33%;
-//   float: left;
-//   // background: red;
-// }
 
 .btn {
   display: inline-block;
   padding: 4px 10px 4px;
   background: #CCC;
-  color: #333;
-  border-color: darken($red, 10%);
+  color: $darkgrey;
+  border-color: $darkred;
   margin-bottom: 0;
   // font-size: $baseFontSize;
   // line-height: $baseLineHeight;
@@ -612,13 +433,13 @@ textarea {
   margin-right: 1em;
 }
 .btn.btn-main {
-  color: #FFF;
+  color: $white;
   background: $blue;
   border-color: darken($blue, 10%);
 }
 .btn.btn-danger {
   background: $red;
-  border-color: darken($red, 10%);
+  border-color: $darkred;
 }
 
 // Media Queries
@@ -626,15 +447,14 @@ textarea {
 @media screen and (max-width: 960px) {
   h1 { font-size: 54px; }
 }
+
 @media screen and (max-width: 768px) {
   header {
     position: static;
     margin-bottom: 1em;
   }
   .logo,
-  nav.main {
-    float: left;
-  }
+  nav.main { float: left; }
   .logo {
     position: static;
     left: auto;
@@ -648,12 +468,9 @@ textarea {
     width: auto;
   }
   .page-title {
-    // clear: both;
     position: static;
     margin-top: 1.5em;
-    // padding-top: 0.5em;
     bottom: auto;
-    // right: auto;
   }
   .page-title,
   .primary,
@@ -672,59 +489,27 @@ textarea {
     width: 30%;
     padding-right: 5%;
   }
-  .widget:last-child {
-    padding: 0;
-  }
-  footer {
-    text-align: center;
-  }
+  .widget:last-child { padding: 0; }
+  footer { text-align: center; }
 }
 
 @media screen and (max-width: 640px) {
-  input {
-    width: 99%;
-  }
+  input { width: 99%; }
 }
 
 @media screen and (max-width: 480px) {
-  h1 {
-    font-size: 40px;
-  }
-  // h2 {
-  //   font-size: 20px;
-  // }
+  h1 { font-size: 40px; }
   blockquote h2,
   blockquote h3,
-  blockquote h4 {
-    text-align: left;
-  }
+  blockquote h4 { text-align: left; }
   nav.main {
     line-height: 1.6em;
     font-size: 0.9em;
-    // padding-left: 0;
-    li {
-      // display: block;
-      margin: 0.5em 0;
-    }
+    li { margin: 0.5em 0; }
   }
   .break { display: inline; }
-  // .seperator {
-  //   display: none;
-  //   // float: left;
-  // }
-  .tile {
-    // width: 100%;
-    // float: none;
-  }
-  .widget.posts .published {
-    display: none;
-  }
-  .full-img-wrapper {
-    margin: 0 -5%;
-  }
-  .full-img {
-    
-  }
+  .widget.posts .published { display: none; }
+  .full-img-wrapper { margin: 0 -5%; }
   .skills {
     margin-left: 0;
     width: auto;
@@ -732,13 +517,7 @@ textarea {
   }
   .widget {
     float: none;
-    // background: red;
     width: auto;
     padding: 0;
   }
 }
-
-@media screen and (max-width: 400px) {
-}
-
-
