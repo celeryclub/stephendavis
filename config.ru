@@ -8,10 +8,11 @@ require 'rack/rewrite'
 use Rack::Rewrite do
 
   # Redirect from Heroku subdomain
-  r301 %r{.*}, 'http://www.stephendavis.im/$&', :if => Proc.new { |rack_env| rack_env['SERVER_NAME'] == 'stephendavis.herokuapp.com' }
+    # 'http://www.stephendavis.im/$&'
+  r301 %r{.*}, Proc.new { |path, rack_env| "http://www.#{rack_env['SERVER_NAME']}#{path}" }, :if => Proc.new { |rack_env| rack_env['SERVER_NAME'] == 'stephendavis.herokuapp.com' }
 
   # Redirect to www
-  r301 %r{.*},  Proc.new { |rack_env| 'http://www.stephendavis.im/$&' }, :if => Proc.new { |rack_env| !(rack_env['SERVER_NAME'] =~ /www\./i) && rack_env['SERVER_NAME'] != 'localhost' }
+  r301 %r{.*}, Proc.new { |path, rack_env| "http://www.#{rack_env['SERVER_NAME']}#{path}" }, :if => Proc.new { |rack_env| !(rack_env['SERVER_NAME'] =~ /www\./i) && rack_env['SERVER_NAME'] != 'localhost' }
 
   # Strip trailing slashes
   r301 %r{^/(.*)/$}, '/$1'
