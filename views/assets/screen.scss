@@ -2,6 +2,7 @@
 // --------------------------------
 $white: #FBFBFB;
 $darkgrey: #333;
+$grey: lighten($darkgrey, 10%);
 $red: #B10;
 $darkred: darken($red, 10%);
 // $blue: #207FB9;
@@ -9,9 +10,10 @@ $blue: #0066BB;
 $darkblue: darken($blue, 15%);
 // $orange: #FF7300;
 // $orange: #F48300;
-// $green: #393;
+// $green: #393010;
 // $green: #91A217;
-$green: #40BF40;
+$g: #40BF40;
+$green: darken($g, 5%);
 
 // Mixins
 // --------------------------------
@@ -40,7 +42,7 @@ body {
   font-family: "PT Sans", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   font-size: 16px;
 }
-h1, h2, h3 {
+h1, h2, h3, h4 {
   font-weight: 400;
   color: $blue;
   line-height: 0.85em;
@@ -56,10 +58,16 @@ h1 {
   font-size: 65px;
   margin: 0;
 }
-h2, h3, h4 { margin: 0.8em 0 0; }
+h2, h3, h4, h5 { margin: 0.8em 0 0; }
 h2, h3 { font-size: 22px; }
 h2 { line-height: 1.1em; }
 h3 { font-family: "PT Sans Narrow", Impact, "Haettenschweiler", "Arial Narrow Bold", sans-serif; }
+h4, h5 {
+  font-weight: 700;
+}
+h5 {
+  font-size: 1em;
+}
 ul { padding-left: 1.6em; }
 p,
 blockquote { margin: 0.8em 0; }
@@ -77,10 +85,10 @@ ul ol {
 }
 code {
   color: $green;
+  font-size: 12px;
 }
 pre {
   margin: 1em 0;
-  font-size: 12px;
   background-color: #EEE;
   border: 1px solid #DDD;
   padding: 5px;
@@ -88,14 +96,15 @@ pre {
   color: #444;
   overflow: auto;
   -webkit-box-shadow: rgba(0, 0, 0, 0.07) 0 1px 2px inset;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
   border-radius: 3px;
 }
 hr {
   border: none;
   background-color: #CCC;
   height: 1px;
+}
+strong {
+  color: $grey;
 }
 a {
   // padding: 0 0.1em;
@@ -121,7 +130,7 @@ blockquote h4 {
   text-align: center;
   margin: 0.5em 0;
 }
-img { background: url("/img/checker.gif"); }
+// img { background: url("/img/checker.gif"); }
 
 // Positioning
 // --------------------------------
