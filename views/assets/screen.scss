@@ -80,7 +80,9 @@ h4 + ol {
   margin-top: 0;
 }
 ul ul,
-ul ol {
+ul ol,
+ol ol,
+ol ul {
   margin: 0;
 }
 code {
