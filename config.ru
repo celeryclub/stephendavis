@@ -7,12 +7,8 @@ run Sinatra::Application
 require 'rack/rewrite'
 use Rack::Rewrite do
 
-  # Redirect from Heroku subdomain
-    # 'http://www.stephendavis.im/$&'
-  r301 %r{.*}, "http://www.stephendavis.im$&", :if => Proc.new { |rack_env| rack_env['SERVER_NAME'] == 'stephendavis.herokuapp.com' }
-
-  # Redirect to www
-  r301 %r{.*}, "http://www.stephendavis.im$&", :if => Proc.new { |rack_env| !(rack_env['SERVER_NAME'] =~ /www\./i) && rack_env['SERVER_NAME'] != 'localhost' }
+  # Redirect from Heroku subdomain and add www
+  r301 %r{.*}, "http://www.stephendavis.im$&", :if => Proc.new { |rack_env| rack_env['SERVER_NAME'] == 'stephendavis.herokuapp.com' || (!(rack_env['SERVER_NAME'] =~ /www\./i) && rack_env['SERVER_NAME'] != 'localhost') }
 
   # Strip trailing slashes
   r301 %r{^/(.*)/$}, '/$1'
