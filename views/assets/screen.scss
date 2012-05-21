@@ -78,6 +78,20 @@ ul ol {
 code {
   color: $green;
 }
+pre {
+  margin: 1em 0;
+  font-size: 12px;
+  background-color: #EEE;
+  border: 1px solid #DDD;
+  padding: 5px;
+  line-height: 1.5em;
+  color: #444;
+  overflow: auto;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.07) 0 1px 2px inset;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
 hr {
   border: none;
   background-color: #CCC;
@@ -375,12 +389,18 @@ textarea {
   width: 99%;
   height: 15em;
 }
-// button {
-//   
-//   background: #6379BA;
-//   color: #FFF;
-//   border: none;
-// }
+button,
+input[type="submit"] {
+  width: auto;
+  min-width: 0;
+  // background: #6379BA;
+  // color: #FFF;
+  // border: none;
+}
+
+form.destroy {
+  display: inline;
+}
 
 
 // Utility
@@ -420,6 +440,7 @@ textarea {
   // line-height: $baseLineHeight;
   // color: $grayDark;
   text-decoration: none;
+  overflow: visible;
   text-align: center;
   // text-shadow: 0 1px 1px rgba(255,255,255,.75);
   vertical-align: middle;

@@ -13,6 +13,8 @@ form[action=="#{new_record ? '/blog' : '/blog/' + @post.id.to_s}" method='POST']
     / input[type='text' name='post[slug]' placeholder='slug' value="#{@post.slug}"]
     input[type='hidden' name='_method' value='PATCH']
   button.btn.btn-main[type='submit'] Submit
-  - unless new_record
-    a.btn[href="/blog/#{@post.slug}"] View
-    / a.btn.btn-danger[href='#'] Delete
+- unless new_record
+  a.btn[href="/blog/#{@post.slug}"] View
+  form.destroy[action="/blog/#{@post.id}" method='POST']
+    input[type='hidden' name='_method' value='DELETE']
+    input.btn.btn-danger[type='submit' value='Delete']

@@ -124,7 +124,6 @@ post '/blog' do
   protected!
   @post = Post.new(params['post'])
   if @post.save
-    # flash[:notice] = 'Post was saved.'
     redirect to('/blog/' + @post.slug)
   else
     @title = 'New Post'
@@ -150,6 +149,11 @@ patch '/blog/:id' do
     @title = 'Edit Post'
     slim :'posts/form', locals: { new_record: false }
   end
+end
+delete '/blog/:id' do
+  protected!
+  Post.get(params[:id]).destroy
+  redirect to('/blog')
 end
 get '/blog/:slug' do
   if @post = Post.first(:slug => params[:slug])
