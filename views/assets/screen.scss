@@ -49,7 +49,6 @@ h1 {
 h2 {
   font-size: 32px;
   line-height: 1.1em;
-  &:first-child { margin-top: .2em; }
 }
 h3 {
   font-size: 22px;
@@ -283,6 +282,7 @@ article a {
     color: #000;
   }
 }
+article:first-of-type h2 { margin-top: .2em; }
 article h2 a {
   background: none;
   &:hover {
@@ -298,6 +298,7 @@ article h2 a {
 }
 .post {
   position: relative;
+  clear: both;
   &:after {
     display: block;
     content: "";
@@ -313,7 +314,7 @@ article h2 a {
 .post img {
   float: left;
   margin: 0 1em .5em 0;
-  max-width: 60%;
+  max-width: 50%;
 }
 .post-nav { clear: both; }
 .post-nav small { display: block; }
@@ -345,8 +346,6 @@ article h2 a {
   white-space: nowrap;
   overflow-x: hidden;
 }
-.archive a { text-decoration: none; }
-.archive a strong { text-decoration: underline; }
 
 // Form
 // --------------------------------

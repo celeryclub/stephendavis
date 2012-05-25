@@ -14,6 +14,7 @@ use Rack::Rewrite do
   r301 %r{^/(.*)/$}, '/$1'
 
   # WP and other misc
+  r301 %r{^/\?.*}, '/'
   r301 %r{^/blog/category/.*}, '/blog/archive'
   r301 %r{^/blog/author/.*}, '/blog/archive'
   r301 %r{^/blog/(19|20)\d\d.*}, '/blog/archive'
