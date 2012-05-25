@@ -41,15 +41,16 @@ h1, h2 {
   font-family: "Crete Round", serif;
   clear: left;
 }
-h2, h3, h4 { margin: 1em 0 0; }
+h2, h3, h4 { margin: 1em 0 .2em; }
 h1 {
-  font-size: 65px;
+  font-size: 70px;
   margin: 0;
 }
 h2 {
   font-size: 32px;
   line-height: 1.1em;
 }
+h2:first-child { margin-top: .2em; }
 h3 {
   font-size: 22px;
   font-family: "PT Sans Narrow", Impact, "Haettenschweiler", "Arial Narrow Bold", sans-serif;
@@ -58,18 +59,21 @@ h4 {
   font-weight: 700;
   font-size: 1em;
 }
-ul { padding-left: 1.6em; }
 p, blockquote { margin: .8em 0; }
+ol, ul {
+  margin: 0.6em 0;
+  padding: 0 0 0 2em;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul { margin: 0; }
 h3 + p,
 h4 + p,
 h3 + ul,
 h4 + ul,
 h3 + ol,
 h4 + ol { margin-top: 0; }
-ul ul,
-ul ol,
-ol ol,
-ol ul { margin: 0; }
 code {
   color: $green;
   font-size: 12px;
@@ -150,7 +154,7 @@ header {
   display: inline-block;
   font-size: 28px;
   padding: 0 3px;
-  line-height: 45px;
+  line-height: 48px;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -253,14 +257,11 @@ footer { color: #999; }
   top: 0;
   right: 0;
   bottom: 0;
-  padding: 1em 0;
 }
 .tile:hover .tile-inner { background: rgba(255, 255, 255, .85); }
 .tile-title {
   text-align: center;
   color: #000;
-  margin: 0;
-  padding: .5em 0;
 }
 
 // About page
@@ -429,7 +430,7 @@ textarea {
   padding: .5em;
   display: inline-block;
 }
-.errors ul { margin-top: 0; }
+.errors ul { margin¡: 0; }
 .full-img,
 .full-img img { width: 100%; }
 .full-img img { display: block; }
