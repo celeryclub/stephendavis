@@ -19,9 +19,22 @@ require 'nokogiri'
 
 # Config
 # ----------------------------
-# set :raise_errors, false
-# set :slim, :pretty => true
-# set :slim, :sections => true
+configure :development do
+  # set :raise_errors, false
+  set :slim, :pretty => true
+  # set :slim, :sections => true
+  # set :sass, { :style => :compressed }
+  # set :sass, :style => :compressed
+  # Sass::Plugin.options[:style] = :compressed 
+  # set :sass, :output_style => :compressed
+end
+configure :production do
+  # set :sass, {:style => :compressed}
+  # set :sass, :style => :compact
+  set :sass, :style => :compressed
+  # set :sass, { :style => :compressed }
+end
+set :sass, {:style => :compact } # default Sass style is :nested
 # assets do
 #   serve '/js',  from: 'assets/js'
 #   serve '/css', from: 'assets/css'
@@ -60,7 +73,7 @@ class Post
   end
 end
 DataMapper.finalize
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "mysql://root:@127.0.0.1/sinatra_sd")
+DataMapper.setup(:default, ENV['DATABASE_URL'] || 'mysql://root:@127.0.0.1/sinatra_stephendavis')
 
 # Helpers
 # ----------------------------
@@ -101,6 +114,7 @@ get '/about' do
   @title = 'About'
   slim :about
 end
+
 get '/blog' do
   @posts = Post.all(:order => [:published.desc])
   @title = 'Blog'
@@ -165,7 +179,6 @@ get '/blog/:slug' do
     error 404
   end
 end
-
 # get '/blog/rss' do
 #   cache_control :public, :must_revalidate, :max_age => 6
 #   content_type 'application/rss+xml'

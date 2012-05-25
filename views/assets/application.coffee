@@ -2,6 +2,8 @@ $ ->
 
   # transition_speed = 300
 
+  $('.btn.btn-danger').on('click', -> false unless confirm 'Are you sure?')
+
   $('.post').fitVids()
 
   $('.datepicker').datepicker({ dateFormat: 'yy-mm-dd' })
@@ -10,7 +12,7 @@ $ ->
   key_last = null
   key_count = null
   $(document).on(
-    'keydown',
+    'keydown'
     (e)->
       # Previous post
       if e.which == 37
@@ -69,7 +71,7 @@ lastfm_recent = ->
   # 'http://ws.audioscrobbler.com/2.0/user/rj/recenttracks.json'
   console.log data_url
   $.getJSON(
-    data_url,
+    data_url
     (data) ->
       # console.log data
       prev_img = ''

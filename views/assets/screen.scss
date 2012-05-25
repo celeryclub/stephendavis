@@ -3,39 +3,26 @@
 $white: #FBFBFB;
 $darkgrey: #333;
 $grey: lighten($darkgrey, 10%);
+
 $red: #B10;
 $darkred: darken($red, 10%);
-// $blue: #207FB9;
+$lightred: lighten($red, 10%);
+
 $blue: #0066BB;
 $darkblue: darken($blue, 15%);
+$lightblue: lighten($blue, 15%);
 // $orange: #FF7300;
 // $orange: #F48300;
 // $green: #393010;
 // $green: #91A217;
+// $green: #079345;
 $g: #40BF40;
 $green: darken($g, 5%);
 
-// Mixins
-// --------------------------------
-@mixin transition($property, $time) {
-  -webkit-transition: $property $time ease-in-out;
-     -moz-transition: $property $time ease-in-out;
-      -ms-transition: $property $time ease-in-out;
-       -o-transition: $property $time ease-in-out;
-          transition: $property $time ease-in-out;
-}
-@mixin transform($transform) {
-  -webkit-transform: $transform;
-     -moz-transform: $transform;
-      -ms-transform: $transform;
-       -o-transform: $transform;
-          transform: $transform;
-}
-
 // General
 // --------------------------------
-::-moz-selection { background: rgba(0,102,187,0.75); color: #fff; text-shadow: none; }
-::selection { background: rgba(0,102,187,0.75); color: #fff; text-shadow: none; }
+::-moz-selection { background: rgba(0, 102, 187, .75); color: #fff; text-shadow: none; }
+::selection { background: rgba(0, 102, 187, .75); color: #fff; text-shadow: none; }
 body {
   background: $white url("/img/light_wool.png") top center;
   color: #222;
@@ -44,47 +31,45 @@ body {
 }
 h1, h2, h3, h4 {
   font-weight: 400;
-  color: $blue;
-  line-height: 0.85em;
+  line-height: .85em;
 }
-h1 a, h2 a, h3 a { color: $blue; }
+h1, h2, h3, h4,
+h1 a, h2 a, h3 a, h4 a { color: $blue; }
 .logo,
 h1, h2 {
   color: $darkgrey;
   font-family: "Crete Round", serif;
   clear: left;
 }
+h2, h3, h4 { margin: 1em 0 0; }
 h1 {
   font-size: 65px;
   margin: 0;
 }
-h2, h3, h4, h5 { margin: 0.8em 0 0; }
-h2, h3 { font-size: 22px; }
-h2 { line-height: 1.1em; }
-h3 { font-family: "PT Sans Narrow", Impact, "Haettenschweiler", "Arial Narrow Bold", sans-serif; }
-h4, h5 {
-  font-weight: 700;
+h2 {
+  font-size: 32px;
+  line-height: 1.1em;
 }
-h5 {
+h3 {
+  font-size: 22px;
+  font-family: "PT Sans Narrow", Impact, "Haettenschweiler", "Arial Narrow Bold", sans-serif;
+}
+h4 {
+  font-weight: 700;
   font-size: 1em;
 }
 ul { padding-left: 1.6em; }
-p,
-blockquote { margin: 0.8em 0; }
+p, blockquote { margin: .8em 0; }
 h3 + p,
 h4 + p,
 h3 + ul,
 h4 + ul,
 h3 + ol,
-h4 + ol {
-  margin-top: 0;
-}
+h4 + ol { margin-top: 0; }
 ul ul,
 ul ol,
 ol ol,
-ol ul {
-  margin: 0;
-}
+ol ul { margin: 0; }
 code {
   color: $green;
   font-size: 12px;
@@ -97,22 +82,20 @@ pre {
   line-height: 1.5em;
   color: #444;
   overflow: auto;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.07) 0 1px 2px inset;
-  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, .07) 0 1px 2px inset;
+  border-radius: 4px;
 }
 hr {
   border: none;
   background-color: #CCC;
   height: 1px;
 }
-strong {
-  color: $grey;
-}
 a {
   // padding: 0 0.1em;
   // margin: 0 -0.1em;
   color: $darkblue;
-  // @include transition(background, 0.2s);
+  text-decoration: none;
+  outline: none;
   &:hover {
     color: $white;
     background: #444;
@@ -124,15 +107,14 @@ blockquote {
   border-top: 1px dashed #CCC;
   border-bottom: 1px dashed #CCC;
   color: $blue;
-  padding: 0 0.8em;
+  padding: 0 .8em;
 }
 blockquote h2,
 blockquote h3,
 blockquote h4 {
   text-align: center;
-  margin: 0.5em 0;
+  margin: .5em 0;
 }
-// img { background: url("/img/checker.gif"); }
 
 // Positioning
 // --------------------------------
@@ -169,13 +151,12 @@ header {
   font-size: 28px;
   padding: 0 3px;
   line-height: 45px;
-  // float: left;
   position: absolute;
   left: 0;
   bottom: 0;
 }
 nav.main {
-  padding: 2em 0 0.4em;
+  padding: 2em 0 .4em;
   position: relative;
   z-index: 100;
   font-size: 1.05em;
@@ -184,16 +165,13 @@ nav.main {
     margin: 0;
   }
   li { display: inline; }
-  a {
-    display: inline-block;
-    text-decoration: none;
-  }
+  a { display: inline-block; }
 }
 .break { display: none; }
 .seperator { color: #CCC; }
 .page-title {
   position: relative;
-  bottom: -0.08em;
+  bottom: -.08em;
 }
 
 // Main
@@ -203,42 +181,42 @@ nav.main {
 // Sidebar
 // --------------------------------
 .widget { margin-bottom: 1em; }
-.widget-title { margin: 0 0 0.5em; }
+.widget-title { margin: 0 0 .5em; }
 .widget ul { margin: 0; }
-.track { margin-bottom: 0.3em; }
+.track { margin-bottom: .3em; }
 .track-cover {
   width: 34px;
   height: 34px;
   float: left;
 }
-.track-cover.duplicate { opacity: 0.4; }
+.track-cover.duplicate { opacity: .4; }
 .track span,
 .track small {
   display: block;
   margin-left: 40px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow-x: hidden;
 }
 
 // Footer
 // --------------------------------
 footer { color: #999; }
 .colophon {
-  font-size: 0.8em;
+  font-size: .8em;
   clear: both;
   margin: 2em 0;
 }
 
 // Home Page
 // --------------------------------
-.tiles {
-
-}
+.tiles {}
 .tile {
   text-decoration: none;
   float: left;
   position: relative;
   width: 30%;
   display: block;
-  // box-shadow: inset 0 0 20px 2px rgba(0,0,0,0.5);
   padding: 0;
   margin: 0;
   margin-right: 5%;
@@ -251,12 +229,12 @@ footer { color: #999; }
   }
   p {
     position: relative;
-    margin: 0.4em 0;
+    margin: .4em 0;
   }
 }
 .tile.about { margin: 0; }
 .tile-background {
-  font-size: 0.8em;
+  font-size: .8em;
   color: $darkblue;
   opacity: 0.85;
   text-align: justify;
@@ -270,7 +248,6 @@ footer { color: #999; }
 .tile.about .tile-background { background: url("/img/im-on-a-lion.jpg") -440px -50px; }
 .tile-inner {
   background: rgba(255,255,255,0.65);
-  @include transition(background, 0.2s);
   position: absolute;
   left: 0;
   top: 0;
@@ -278,14 +255,13 @@ footer { color: #999; }
   bottom: 0;
   padding: 1em 0;
 }
-.tile:hover .tile-inner { background: rgba(255,255,255,0.75); }
+.tile:hover .tile-inner { background: rgba(255, 255, 255, .85); }
 .tile-title {
   text-align: center;
   color: #000;
   margin: 0;
-  padding: 0.5em 0;
+  padding: .5em 0;
 }
-
 
 // About page
 // --------------------------------
@@ -295,14 +271,14 @@ footer { color: #999; }
   margin-left: 1em;
 }
 
-
 // Blog
 // --------------------------------
 article { margin-bottom: 2em; }
 article a {
   background: #FFFEBF;
+  text-decoration: none;
   &:hover {
-    background: #FFFB00;
+    background: rgba(255, 251, 0, .5);
     color: #000;
   }
 }
@@ -326,8 +302,8 @@ article h2 a {
     content: "";
     width: 0;
     height: 0;
-    border-top: 20px solid #CCC;
-    border-left: 20px solid transparent;
+    border-top: 32px solid #CCC;
+    border-left: 32px solid transparent;
     position: absolute;
     top: 0;
     right: 0;
@@ -335,7 +311,7 @@ article h2 a {
 }
 .post img {
   float: left;
-  margin: 0 1em 0.5em 0;
+  margin: 0 1em .5em 0;
   max-width: 60%;
 }
 .post-nav { clear: both; }
@@ -346,7 +322,7 @@ article h2 a {
   float: left;
   .inner {
     border-left: 1px solid #CCC;
-    padding-left: 0.8em;
+    padding-left: .8em;
   }
 }
 .newer {
@@ -354,125 +330,109 @@ article h2 a {
   text-align: right;
   .inner {
     border-right: 1px solid #CCC;
-    padding-right: 0.8em;
+    padding-right: .8em;
   }
 }
 .comments {
   margin-top: 2em;
   text-align: center;
 }
-.archive { padding-left: 0.6em; }
+.archive { padding-left: .6em; }
 .archive li {
   text-overflow: ellipsis;
   list-style-position: inside;
   white-space: nowrap;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 .archive a { text-decoration: none; }
 .archive a strong { text-decoration: underline; }
 
-
-// Form Elements
+// Form
 // --------------------------------
 input,
 textarea,
-button {
-  display: block;
-  margin-bottom: 1em;
-}
+.btn { font-size: 13px; }
 input,
 textarea {
-  border: 1px solid #999;
-  background: #E0E0E0;
-  line-height: 1.4em;
-  padding: 0 5px;
-  border-radius: 2px;
-  min-width: 50%;
-  @include transition(box-shadow, 0.2s);
-  box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+  display: block;
+  margin-bottom: 1em;
+  line-height: 18px;
+  outline: none;
+  border: 1px solid #CCC;
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, .05),0 1px 0 white;
+  &:hover {
+    outline: none;
+    border: 1px solid #999;
+    cursor: text!important;
+  }
   &:focus {
-    outline: 0;
-    background: #EFEFEF;
-    box-shadow: inset 0 0 1px rgba(0,0,0,0.5);
+    outline: none;
+    color: #333;
+    border-color: #56B4EF;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, .05),0 0 8px rgba(82, 168, 236, .6);
   }
 }
 textarea {
   width: 99%;
-  height: 15em;
+  height: 25em;
 }
-button,
-input[type="submit"] {
-  width: auto;
-  min-width: 0;
-  // background: #6379BA;
-  // color: #FFF;
-  // border: none;
+.btn {
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+  padding: 5px 10px;
+  font-weight: bold;
+  line-height: 18px;
+  color: #333;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+  border: 1px solid #CCC;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+  background: -webkit-linear-gradient($white, darken($white, 15%));
+  float: left;
+  margin-right: 0.5em;
+  &:hover {
+    color: #333;
+    background: -webkit-linear-gradient(darken($white, 5%), darken($white, 20%));
+  }
 }
-
-form.destroy {
-  display: inline;
+.btn.btn-danger,
+.btn.btn-primary {
+  color: $white;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
 }
-
+.btn.btn-primary {
+  background: -webkit-linear-gradient($lightblue, $blue);
+  border-color: $darkblue;
+  &:hover { background: -webkit-linear-gradient(darken($lightblue, 5%), darken($blue, 5%)); }
+}
+.btn.btn-danger {
+  background: -webkit-linear-gradient($lightred, $red);
+  border-color: $darkred;
+  &:hover { background: -webkit-linear-gradient(darken($lightred, 5%), darken($red, 5%)); }
+}
 
 // Utility
 // --------------------------------
-
 .cf:before,
 .cf:after { content: ""; display: table; }
 .cf:after { clear: both; }
 .cf { *zoom: 1; }
-
 .errors {
   background: $red;
   color: $white;
   margin-bottom: 1em;
-  padding: 0.5em;
+  padding: .5em;
   display: inline-block;
 }
-.errors ul {
-  margin-top: 0;
-}
+.errors ul { margin-top: 0; }
 .full-img,
-.full-img img {
-  width: 100%;
-}
-.full-img img {
-  display: block;
-}
-
-.btn {
-  display: inline-block;
-  padding: 4px 10px 4px;
-  background: #CCC;
-  color: $darkgrey;
-  border-color: $darkred;
-  margin-bottom: 0;
-  // font-size: $baseFontSize;
-  // line-height: $baseLineHeight;
-  // color: $grayDark;
-  text-decoration: none;
-  overflow: visible;
-  text-align: center;
-  // text-shadow: 0 1px 1px rgba(255,255,255,.75);
-  vertical-align: middle;
-  // @include buttonBackground($btnBackground, $btnBackgroundHighlight);
-  border: 1px solid #000;
-  // border-bottom-color: darken($btnBorder, 10%);
-  border-radius: 2px;
-  // $shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-  // @include box-shadow($shadow);
-  cursor: pointer;
-  margin-right: 1em;
-}
-.btn.btn-main {
-  color: $white;
-  background: $blue;
-  border-color: darken($blue, 10%);
-}
-.btn.btn-danger {
-  background: $red;
-  border-color: $darkred;
-}
+.full-img img { width: 100%; }
+.full-img img { display: block; }
 
 // Media Queries
 // --------------------------------
@@ -481,26 +441,24 @@ form.destroy {
 }
 
 @media screen and (max-width: 768px) {
-  header {
-    position: static;
-    margin-bottom: 1em;
-  }
+  header,
+  .logo,
+  nav.main,
+  .page-title { position: static; }
+  header { margin-bottom: 1em; }
   .logo,
   nav.main { float: left; }
   .logo {
-    position: static;
     left: auto;
     bottom: auto;
   }
   nav.main {
     padding: 0;
-    position: static;
     line-height: 45px;
     padding-left: 1em;
     width: auto;
   }
   .page-title {
-    position: static;
     margin-top: 1.5em;
     bottom: auto;
   }
@@ -536,8 +494,8 @@ form.destroy {
   blockquote h4 { text-align: left; }
   nav.main {
     line-height: 1.6em;
-    font-size: 0.9em;
-    li { margin: 0.5em 0; }
+    font-size: .9em;
+    li { margin: .5em 0; }
   }
   .break { display: inline; }
   .widget.posts .published { display: none; }
