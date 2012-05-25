@@ -282,7 +282,8 @@ article a {
     color: #000;
   }
 }
-article:first-of-type h2 { margin-top: .2em; }
+.archive-link + .post .post-title,
+.month-title:first-child { margin-top: .2em; }
 article h2 a {
   background: none;
   &:hover {

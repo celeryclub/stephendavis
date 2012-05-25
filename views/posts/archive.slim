@@ -2,7 +2,7 @@
 - @post_groups.each do |post_group|
   - year, month = post_group[0].split('-')
   / h2 = Date::MONTHNAMES
-  h2 #{Date::MONTHNAMES[month.to_i]} #{year}
+  h2.month-title #{Date::MONTHNAMES[month.to_i]} #{year}
   ul.archive
     - post_group[1].sort {|a,b| b.published <=> a.published}.each do |post|
       / strong = post.published.strftime('%m/%d/%y') + ' - ' + post.title
