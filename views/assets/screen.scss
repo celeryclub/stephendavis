@@ -282,8 +282,8 @@ article a {
     color: #000;
   }
 }
-.archive-link + .post .post-title,
-.month-title:first-child { margin-top: .2em; }
+.archive-link + .post .post-title { margin-top: .2em; }
+.month-title:first-child { margin-top: 0; }
 article h2 a {
   background: none;
   &:hover {
@@ -366,7 +366,6 @@ textarea {
   &:hover {
     outline: none;
     border: 1px solid #999;
-    cursor: text!important;
   }
   &:focus {
     outline: none;

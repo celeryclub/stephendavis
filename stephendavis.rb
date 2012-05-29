@@ -50,7 +50,7 @@ set :sass, {:style => :compact } # default Sass style is :nested
 # end
 MenuItem = Struct.new(:path, :text, :description)
 before do
-  @recent_posts = Post.all(:order => [:published.desc], :limit => 3)
+  @recent_posts = Post.all(:fields => [:slug, :title, :published], :order => [:published.desc], :limit => 3)
   @menu_items = [
     MenuItem.new('/','Home',''),
     MenuItem.new('/blog','Blog','Read some pretty good articles.'),
@@ -98,7 +98,8 @@ end
 
 # Routes
 # ----------------------------
-get('/css/screen.css') { scss(:'assets/screen') }
+# get('/css/screen.css') { scss(:'assets/screen', :style => :compressed) }
+get('/css/screen.css') { scss(:'assets/screen' }
 get('/js/application.js') { coffee(:'assets/application') }
 
 get '/' do
