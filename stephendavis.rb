@@ -99,7 +99,7 @@ end
 # Routes
 # ----------------------------
 # get('/css/screen.css') { scss(:'assets/screen', :style => :compressed) }
-get('/css/screen.css') { scss(:'assets/screen' }
+get('/css/screen.css') { scss(:'assets/screen') }
 get('/js/application.js') { coffee(:'assets/application') }
 
 get '/' do
