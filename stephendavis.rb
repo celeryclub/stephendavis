@@ -4,8 +4,6 @@ require 'slim'
 require 'sass'
 require 'coffee-script'
 # require 'uglifier'
-# require 'rack/flash'
-require 'sinatra/assetpack'
 require 'rdiscount'
 require 'nokogiri'
 # require 'aws/s3'
@@ -18,44 +16,20 @@ require 'nokogiri'
 # * New 'Projects' header image
 # * add full text search
 # * reload Last.fm dynamically
+# * Change from jQuery to RightJS
 # * Add file upload capability (http://amazon.rubyforge.org/) (http://ididitmyway.heroku.com/past/2011/1/16/uploading_files_in_sinatra/)
 
 # Config
 # ----------------------------
+set :slim, :pretty => true
 configure :development do
   DataMapper.auto_upgrade!
-  # set :raise_errors, false
-  set :slim, :pretty => true
-  # set :slim, :sections => true
-  # set :sass, { :style => :compressed }
-  # Sass::Plugin.options[:style] = :compressed 
-  # set :sass, :output_style => :compressed
 end
-# configure :production do
-  # set :sass, {:style => :compressed}
-  # set :sass, :style => :compact
-  # set :sass, :style => :compressed
-  # set :sass, { :style => :compressed }
-# end
-# set :sass, :output => :compressed
-# set :sass, :style => :compressed
-# set :sass, {:style => :compact } # default Sass style is :nested
-assets do
-  serve '/css', from: 'assets/css'
-  serve '/js', from: 'assets/js'
+configure :production do
+  set :sass, :output => :compressed
+  set :sass, :style => :compressed
+end
 
-  css :application, [
-    '/css/normalize.css',
-    '/css/jquery-ui-1.8.20.custom.css',
-    '/css/application.css'
-  ]
-  js :html5shiv, [ '/js/html5shiv.js' ]
-  js :application, [
-    '/js/jquery.fitvids.js',
-    '/js/jquery-ui-1.8.20.custom.min.js',
-    '/js/application.js'
-  ]
-end
 MenuItem = Struct.new(:path, :text, :description)
 before do
   @recent_posts = Post.all(:fields => [:slug, :title, :published], :order => [:published.desc], :limit => 3)
@@ -86,7 +60,6 @@ DataMapper.finalize
 # Helpers
 # ----------------------------
 helpers do
-  # markdown :autolink
   def markdown(md) RDiscount.new(md, :smart).to_html end
   def strip_tags(html) Nokogiri::HTML(html).inner_text end
   def truncate(text, length = 40, end_string = ' &hellip;')
@@ -107,8 +80,8 @@ end
 # Routes
 # ----------------------------
 # get('/css/screen.css') { scss(:'assets/screen', :style => :compressed) }
-# get('/css/screen.css') { scss(:'assets/screen') }
-# get('/js/application.js') { coffee(:'assets/application') }
+get('/css/application.css') { scss(:'assets/application') }
+get('/js/application.js') { coffee(:'assets/application') }
 
 get '/' do
   @title = 'This is the website of Stephen Davis'
@@ -188,11 +161,6 @@ get '/blog/:slug' do
     error 404
   end
 end
-# get '/blog/rss' do
-#   cache_control :public, :must_revalidate, :max_age => 6
-#   content_type 'application/rss+xml'
-#   slim :'posts/rss', :format => :xhtml, :layout => false
-# end
 
 error 404 do
   @title = 'Not Found'

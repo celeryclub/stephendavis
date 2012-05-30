@@ -3,18 +3,15 @@ html
     title #{@title} - Stephen Davis - Website design and devlopment in Greenville South Carolina
     meta[name='viewport' content='width=device-width']
     link[rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Sans+Narrow:400,700|Crete+Round:400,400italic']
-    == css :application, :media => 'screen'
-    / link[rel='stylesheet' href='/css/normalize.css']
-    / link[rel='stylesheet' href='/css/jquery-ui-1.8.20.custom.css']
-    / link[rel='stylesheet' href='/css/screen.css']
+    link[rel='stylesheet' href='/css/normalize.css']
+    link[rel='stylesheet' href='/css/jquery-ui-1.8.20.custom.css']
+    link[rel='stylesheet' href='/css/application.css']
     link[rel='shortcut icon' href='/favicon.png']
-    == js :html5shiv
-    / script[src='/js/html5shiv.js']
+    script[src='/js/html5shiv.js']
   body
     .wrapper
       header.cf
         a.logo[href='/'] Stephen Davis
-        / .intro.cf
         nav.main: ul
           - @menu_items.each_with_index do |menu_item, i|
             li: a[href="#{menu_item.path}"] = menu_item.text
@@ -45,13 +42,9 @@ html
               li: a[href='http://twitter.com/stephendavis89/'] Twitter
               li: a[href='http://github.com/stephendavis89'] GitHub
               li: a[href='http://www.rdio.com/people/stephendavis89/'] Rdio
-          / .widget.friends
-          /   h3.widget-title Friends
-          /   p are here...
       footer.colophon.cf
         p &copy; #{Time.now.strftime('%Y')} Stephen Davis. Reservations are all right.
-    script[src='//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js']
-    == js :application
+    script[src='http://cdn.rightjs.org/right.js']
     / script[src='/js/jquery.fitvids.js']
     / script[src='/js/jquery-ui-1.8.20.custom.min.js']
-    / script[src='/js/application.js']
+    script[src='/js/application.js']
