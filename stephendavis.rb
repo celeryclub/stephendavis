@@ -3,33 +3,21 @@ require 'data_mapper'
 require 'slim'
 require 'sass'
 require 'coffee-script'
-# require 'uglifier'
 require 'rdiscount'
 require 'nokogiri'
 # require 'aws/s3'
 
-
-# git remote add github git@github.com:stephendavis89/stephendavis.git
-
-
-# TODO:
+# TODO
+# ----------------------------
 # * New 'Projects' header image
 # * add full text search
 # * reload Last.fm dynamically
-# * Change from jQuery to RightJS
+# * Change from jQuery to RightJS?
 # * Add file upload capability (http://amazon.rubyforge.org/) (http://ididitmyway.heroku.com/past/2011/1/16/uploading_files_in_sinatra/)
 
 # Config
 # ----------------------------
 set :slim, :pretty => true
-configure :development do
-  DataMapper.auto_upgrade!
-end
-configure :production do
-  set :sass, :output => :compressed
-  set :sass, :style => :compressed
-end
-
 MenuItem = Struct.new(:path, :text, :description)
 before do
   @recent_posts = Post.all(:fields => [:slug, :title, :published], :order => [:published.desc], :limit => 3)
@@ -51,11 +39,10 @@ class Post
   property :slug, String, :default => lambda { |r,p| r.slugize } #, :unique => true
   property :published, Date, :required => true
   property :body, Text, :required => true
-  def slugize
-    title.downcase.gsub(/\W/,'-').squeeze('-').chomp('-') 
-  end
+  def slugize title.downcase.gsub(/\W/,'-').squeeze('-').chomp('-') end
 end
 DataMapper.finalize
+DataMapper.auto_upgrade!
 
 # Helpers
 # ----------------------------
@@ -79,7 +66,6 @@ end
 
 # Routes
 # ----------------------------
-# get('/css/screen.css') { scss(:'assets/screen', :style => :compressed) }
 get('/css/application.css') { scss(:'assets/application') }
 get('/js/application.js') { coffee(:'assets/application') }
 

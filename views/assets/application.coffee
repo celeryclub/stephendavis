@@ -41,14 +41,8 @@ $ ->
       # console.log key_count
   )
 
-  # size_tiles()
-  # $(window).on('resize', size_tiles)
-
   lastfm_recent()
   # setInterval(lastfm_recent(), 5000)
-
-
-# document.getElementsByTagName('body')[0].style.backgroundColor = 'green'
 
 
 strip_trailing_slash = (str) ->
@@ -56,19 +50,13 @@ strip_trailing_slash = (str) ->
     str.substr(0, str.length - 1)
   str
 
-# size_tiles = ->
-#   # console.log $('.tile').width()
-#   $('.tile').height($('.tile').width());
-
 lastfm_recent = ->
   api_key = '3b542380a2728ae170a8b50184d9eb40'
   user = 'stephendavis89'
   format = 'json'
   limit = 4
-  # htm = ''
   $('.lastfm').find('.tracks').html('')
   data_url = "http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=#{user}&limit=#{limit}&format=#{format}&api_key=#{api_key}"
-  # 'http://ws.audioscrobbler.com/2.0/user/rj/recenttracks.json'
   console.log data_url
   $.getJSON(
     data_url
@@ -77,10 +65,7 @@ lastfm_recent = ->
       prev_img = ''
       for track, i in data.recenttracks.track
         # console.log "Name: #{track.name} / Artist: #{track.artist['#text']} / Album: #{track.album['#text']} / Image: #{track.image[3]['#text']}"
-        # console.log track.name
-        # console.log i
         if i < limit
-          # classes = 'track'
           htm = "<div class='track'><img class='track-cover"
           current_img = track.image[0]['#text']
           if current_img == prev_img
@@ -88,12 +73,5 @@ lastfm_recent = ->
           prev_img = current_img
           htm += "' src='#{current_img}'><span class='name'>#{track.name}</span><small class='artist'>#{track.artist['#text']}</small>"
           htm += "</div>"
-          # htm += "<li>Name: #{track.name} / Artist: #{track.artist['#text']} / Album: #{track.album['#text']} / Image: #{track.image[3]['#text']}</li>"
-          $('.lastfm').find('.tracks').append(htm) #.hide().slideDown(1000)
-      # ,(data, textStatus, jqXHR) ->
-      # console.log htm
-      # return htm
-      # console.log 'refreshing last.fm feed'
-      # $('.lastfm').find('.tracks').append(htm).hide().slideDown(300)
+          $('.lastfm').find('.tracks').append(htm).hide().slideDown(300)
   )
-  # htm

@@ -18,7 +18,7 @@ html
             - unless i == @menu_items.count - 1
               span.seperator
                 '  /
-            - if i == @menu_items.count / 2.floor - 1
+            - if i == (@menu_items.count / 2).floor - 1
               span.break: br
         h1.page-title = @title
       #main.cf
@@ -44,7 +44,7 @@ html
               li: a[href='http://www.rdio.com/people/stephendavis89/'] Rdio
       footer.colophon.cf
         p &copy; #{Time.now.strftime('%Y')} Stephen Davis. Reservations are all right.
-    script[src='http://cdn.rightjs.org/right.js']
-    / script[src='/js/jquery.fitvids.js']
-    / script[src='/js/jquery-ui-1.8.20.custom.min.js']
+    script[src='//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js']
+    script[src='/js/jquery.fitvids.js']
+    script[src='/js/jquery-ui-1.8.20.custom.min.js']
     script[src='/js/application.js']
