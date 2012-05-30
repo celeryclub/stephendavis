@@ -39,7 +39,9 @@ class Post
   property :slug, String, :default => lambda { |r,p| r.slugize } #, :unique => true
   property :published, Date, :required => true
   property :body, Text, :required => true
-  def slugize title.downcase.gsub(/\W/,'-').squeeze('-').chomp('-') end
+  def slugize
+    title.downcase.gsub(/\W/,'-').squeeze('-').chomp('-')
+  end
 end
 DataMapper.finalize
 DataMapper.auto_upgrade!
