@@ -6,8 +6,6 @@ $ ->
 
   $('.post').fitVids()
 
-  $('.datepicker').datepicker({ dateFormat: 'yy-mm-dd' })
-
   dlp = strip_trailing_slash(document.location.pathname)
   key_last = null
   key_count = null

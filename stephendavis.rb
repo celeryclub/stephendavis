@@ -7,12 +7,13 @@ require 'rdiscount'
 require 'nokogiri'
 # require 'aws/s3'
 
+
 # TODO
 # ----------------------------
 # * New 'Projects' header image
 # * add full text search
 # * reload Last.fm dynamically
-# * Change from jQuery to RightJS?
+# * Change from jQuery to RightJS? $(document).on('ready', function() {...});
 # * Add file upload capability (http://amazon.rubyforge.org/) (http://ididitmyway.heroku.com/past/2011/1/16/uploading_files_in_sinatra/)
 
 # Config
@@ -28,6 +29,7 @@ before do
     MenuItem.new('/about','About','Learn a little bit about me.')
   ]
 end
+
 
 # Models
 # ----------------------------
@@ -45,6 +47,7 @@ class Post
 end
 DataMapper.finalize
 DataMapper.auto_upgrade!
+
 
 # Helpers
 # ----------------------------
@@ -66,6 +69,7 @@ helpers do
   end
 end
 
+
 # Routes
 # ----------------------------
 get('/css/application.css') { scss(:'assets/application') }
@@ -76,6 +80,17 @@ get '/' do
   @newest_post = Post.first(:order => [:published.desc])
   slim :index
 end
+
+# get '/blog/search/:query' do
+#   query = "%#{params[:query].gsub('+', '%')}%"
+#   @posts = Post.all(:title.like => query) | Post.all(:body.like => query)
+#   # @title = @post.title
+#   # slim :'posts/detail'
+#   htms = query.inspect
+#   htms += '<br>'
+#   htms += @posts.collect { |k, v| "#{k.title}=#{v} " }.join
+# end
+
 get '/projects' do
   @title = 'Projects'
   slim :projects
@@ -84,24 +99,23 @@ get '/about' do
   @title = 'About'
   slim :about
 end
-
 get '/blog' do
-  @posts = Post.all(:order => [:published.desc])
   @title = 'Blog'
+  @posts = Post.all(:order => [:published.desc])
   slim :'posts/index'
 end
 get '/blog/archive' do
+  @title = 'Archive'
   @post_groups = Post.all.inject({}) do |s,p|
     ym = p.published.strftime('%Y-%m')
     s.merge(s[ym] ? {ym=>s[ym]<<p} : {ym=>[p]})
   end.sort {|a,b| b[0] <=> a[0]}
-  @title = 'Archive'
   slim :'posts/archive'
 end
 get '/blog/new' do
   protected!
-  @post = Post.new
   @title = 'New Post'
+  @post = Post.new
   slim :'posts/form', locals: { new_record: true }
 end
 post '/blog' do
