@@ -22,7 +22,7 @@ html
               span.break: br
         h1.page-title = @title
       #main.cf
-        strong Title: #{@title} / FP: #{request.path_info.split('/').last.gsub('-', ' ').capitalize}
+        / strong Title: #{@title} / FP: #{request.path_info.split('/').last.gsub('-', ' ').capitalize}
         .primary
           == yield
         .secondary.cf
