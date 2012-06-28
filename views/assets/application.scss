@@ -273,6 +273,7 @@ article { margin-bottom: 2em; }
 article a {
   background: #FFFEBF;
   text-decoration: none;
+  // white-space: pre-line;
   &:hover {
     background: rgba(255, 251, 0, .5);
     color: #000;

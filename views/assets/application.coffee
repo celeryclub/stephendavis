@@ -71,5 +71,9 @@ lastfm_recent = ->
           prev_img = current_img
           htm += "' src='#{current_img}'><span class='name'>#{track.name}</span><small class='artist'>#{track.artist['#text']}</small>"
           htm += "</div>"
-          $('.lastfm').find('.tracks').append(htm).hide().slideDown(300)
+          # $('.lastfm').find('.tracks').append(htm).hide().slideDown(300)
+          $('.lastfm').find('.tracks').append(htm)
+      console.log $('.lastfm').find('.track').hide().first().show(150, show_next = ->
+        $(this).next('.track').show(150, show_next);
+      )
   )
