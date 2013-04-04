@@ -1,5 +1,9 @@
 require 'sinatra'
 require 'data_mapper'
+# require 'dm_ferret_adapter'
+# require 'dm_is_searchable'
+# require 'dm-ferret-adapter'
+# require 'dm-is-searchable'
 require 'slim'
 require 'sass'
 require 'coffee-script'
@@ -11,7 +15,6 @@ require 'nokogiri'
 # TODO
 # ----------------------------
 # * New 'Projects' header image
-# * add full text search
 # * reload Last.fm dynamically
 # * Change from jQuery to RightJS? $(document).on('ready', function() {...});
 # * Add file upload capability (http://amazon.rubyforge.org/) (http://ididitmyway.heroku.com/past/2011/1/16/uploading_files_in_sinatra/)
@@ -34,6 +37,7 @@ end
 # Models
 # ----------------------------
 DataMapper.setup(:default, ENV['DATABASE_URL'] || 'mysql://root:@127.0.0.1/sinatra_stephendavis')
+# DataMapper.setup(:search, :adapter => 'ferret')
 class Post
   include DataMapper::Resource
   property :id, Serial
@@ -41,8 +45,64 @@ class Post
   property :slug, String, :default => lambda { |r,p| r.slugize } #, :unique => true
   property :published, Date, :required => true
   property :body, Text, :required => true
+  # is :searchable
+  # repository(:search) do
+  #   properties(:search).clear
+  #   property :title, String
+  #   property :body, Text
+  # end
   def slugize
     title.downcase.gsub(/\W/,'-').squeeze('-').chomp('-')
+    # title.downcase.gsub(' ', '-').gsub(/\W/,'')
+  end
+  # Post.search(:query => params[:query], :fields => [:title, :body])
+  def self.search(params, options = {})
+    query = params[:query]
+    fields = params[:fields]
+    searchables = fields.map { |field| self.send(field.to_s) }
+    # self.all({:slug.not => 'home'}.merge(options))
+    posts = self.all(:order => [:published.desc])
+    # results = []
+    # posts.each do |post|
+      # results << post.body
+    # end
+    # posts.collect { |k, v| "#{k.title}=#{v} " }.join
+    w = []
+    # results = []
+    results = posts.select do |post|
+    # posts.each do |post|
+      # words = []
+      # post.body.split
+      # titles << post.title
+      # titles << post.title.split(' ')
+      # post.title.split(' ').each { |word| titles << word }
+
+      # post.title.split(' ').each { |word| words << word.downcase }
+      words = []
+      searchables.each do |field|
+        post.send(field.name).split(' ').each { |word| words << word.downcase.gsub(/\W/,'') }
+        # w << post.send(field.name)
+      end
+      # w << post.title.split(' ').map { |word| word.downcase }
+      w << words
+      # query.split('+').all? { |term| words.include?(term.downcase.gsub(/\W/,'')) }
+      query.split('+').all? { |term| words.any? { |word| word =~ /#{term.downcase.gsub(/\W/,'')}/ } }
+      # titles << words << query
+      # words.include?(query)
+      # if words.include?(query)
+        # results << post
+        # results << query
+      # end
+      # titles << words.include?(query).class
+      # titles << query.split('+')
+      # query.split('+').each do |term|
+        # titles << term
+      # end
+    end
+    results
+    # query.split('+')
+    # w
+    # searchables
   end
 end
 DataMapper.finalize
@@ -72,24 +132,14 @@ end
 
 # Routes
 # ----------------------------
-get('/css/application.css') { scss(:'assets/application') }
-get('/js/application.js') { coffee(:'assets/application') }
+get('/css/app.css') { scss(:'assets/app') }
+get('/js/app.js') { coffee(:'assets/app') }
 
 get '/' do
   @title = 'This is the website of Stephen Davis'
   @newest_post = Post.first(:order => [:published.desc])
   slim :index
 end
-
-# get '/blog/search/:query' do
-#   query = "%#{params[:query].gsub('+', '%')}%"
-#   @posts = Post.all(:title.like => query) | Post.all(:body.like => query)
-#   # @title = @post.title
-#   # slim :'posts/detail'
-#   htms = query.inspect
-#   htms += '<br>'
-#   htms += @posts.collect { |k, v| "#{k.title}=#{v} " }.join
-# end
 
 get '/projects' do
   @title = 'Projects'
@@ -111,6 +161,20 @@ get '/blog/archive' do
     s.merge(s[ym] ? {ym=>s[ym]<<p} : {ym=>[p]})
   end.sort {|a,b| b[0] <=> a[0]}
   slim :'posts/archive'
+end
+get '/blog/search/:query' do
+  @title = 'Search'
+  # @query = "%#{params[:query].gsub('+', '%')}%"
+  # @posts = Post.all(:title.like => @query) | Post.all(:body.like => @query)
+  # results.inspect
+  # @title = @post.title
+  @query = params[:query] #.gsub('+', ' ')
+  # Post.search(:field_blah => 'value', :attribute_blah => 'value', default_options_hash)
+  @results = Post.search(:query => @query, :fields => [:title, :body]) #, default_options_hash)
+  slim :'posts/results'
+  # htms = query.inspect
+  # htms += '<br>'
+  # htms += @posts.collect { |k, v| "#{k.title}=#{v} " }.join
 end
 get '/blog/new' do
   protected!

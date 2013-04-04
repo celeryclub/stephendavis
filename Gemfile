@@ -4,6 +4,8 @@ ruby '1.9.3'
 
 gem 'sinatra'
 gem 'data_mapper'
+# gem 'dm-ferret-adapter' #, :require => 'dm_ferret_adapter'
+# gem 'dm-is-searchable' #, :require => 'dm_is_searchable'
 gem 'slim'
 gem 'thin'
 gem 'sass'

@@ -297,6 +297,11 @@ article h2 a {
 .post {
   position: relative;
   clear: both;
+  img {
+    float: left;
+    margin: 0 1em .5em 0;
+    max-width: 50%;
+  }
   &:after {
     display: block;
     content: "";
@@ -308,11 +313,6 @@ article h2 a {
     top: 0;
     right: 0;
   }
-}
-.post img {
-  float: left;
-  margin: 0 1em .5em 0;
-  max-width: 50%;
 }
 .post-nav { clear: both; }
 .post-nav small { display: block; }
@@ -337,12 +337,18 @@ article h2 a {
   margin-top: 2em;
   text-align: center;
 }
-.archive { padding-left: .6em; }
-.archive li {
-  text-overflow: ellipsis;
-  list-style-position: inside;
-  white-space: nowrap;
-  overflow-x: hidden;
+.archive {
+  padding-left: .6em;
+  li {
+    text-overflow: ellipsis;
+    list-style-position: inside;
+    white-space: nowrap;
+    overflow-x: hidden;
+  }
+}
+mark {
+  color: $white;
+  background-color: $darkgrey;
 }
 
 // Form
