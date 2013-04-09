@@ -1,0 +1,32 @@
+doctype 5
+html
+  head
+    title= title
+    //- link(rel='stylesheet', href='/stylesheets/normalize.css')
+    //- link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Lato:100,300,700,900')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/screen.css')
+  body
+    header
+      .navbar
+        .navbar-inner
+          a.brand(href='/') Prayer Cards
+          ul.nav
+            li: a(href='#') Cards
+            li: a(href='/requests') Requests
+      //- p.title
+        //- span.half Fun-raiser
+        //- span.divider for
+        //- span.half Maya's Teeth
+        //- .photo: img(src='images/maya.png', width='342', height='352')
+    #main: .wrapper
+      if message = messages.pop()
+        //- - console.log(message)
+        //- - console.log(message.constructor)
+        //- - console.log(message.type)
+        //- - console.log(message.msg)
+        .alert(class='alert-#{message[0][0]}')= message[0][1]
+      block content
+    script(src='/javascripts/jquery-1.9.1.min.js')
+    script(src='/javascripts/jquery-ui-1.10.2.custom.min.js')
+    script(src='/javascripts/main.js')

@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  p.short: small Thank you for your gift!
+  //- p Welcome to #{title}
+  //- p= JSON.stringify(videos)
+  .videos.cf
+    - for video, i in videos
+      .video.cf(class= i % 2 == 0 ? 'odd' : 'even' )
+        h2= video.title
+        p= video.description
+        //- img(src='http://placehold.it/350x150/fff/ccc')
+        iframe(width="640", height="390", src="http://www.youtube-nocookie.com/embed/#{video.link}?rel=0", frameborder="0", allowfullscreen)

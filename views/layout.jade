@@ -1,0 +1,50 @@
+doctype 5
+html
+  head
+    title #{title} - Stephen Davis - Website design and devlopment in Greenville South Carolina
+    meta(name='viewport', content='width=device-width')
+    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Sans+Narrow:400,700|Crete+Round:400,400italic')
+    != css('normalize')
+    != css('screen')
+    link(rel='shortcut icon', href='/favicon.png')
+    != js('html5shiv')
+  body
+    .wrapper
+      header.cf
+        a.logo(href='/') Stephen Davis
+        nav.main: ul
+          - for menuItem in menuItems
+            li: a(href="#{menuItem.uri}")= menuItem.text
+            //- - if i == (@menu_items.count / 2).floor - 1
+            //-   span.break: br
+        h1.page-title= title
+      #main.cf
+        //- / strong Title: #{title} / FP: #{request.path_info.split('/').last.gsub('-', ' ').capitalize}
+        .primary
+          block content
+        .secondary.cf
+          .widget.posts
+            h3.widget-title Recent Posts
+            ul
+              //- - @recent_posts.each do |post|
+              //-   li
+              //-     a(href=('/blog/'+post.slug)) = post.title
+              //-     '
+              //-     small.published #{post.published.strftime("%b %e")}
+          .widget.lastfm
+            h3.widget-title What I'm listening to
+            .tracks: p Loading...
+          .widget.social
+            h3.widget-title On the internet
+            ul
+              li: a(href='http://twitter.com/stephendavis89/') Twitter
+              li: a(href='http://github.com/stephendavis89') GitHub
+              li: a(href='http://www.rdio.com/people/stephendavis89/') Rdio
+      footer.colophon.cf
+        p &copy; #{new Date().getFullYear()} Stephen Davis. Thanks for visiting.
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+    script
+      window.jQuery || document.write('<script src="/Longberry/web/public/js/jquery-1.9.1.min.js"><\/script>')
+    != js('jquery.pjax')
+    != js('jquery.fitvids')
+    != js('main')

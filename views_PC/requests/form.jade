@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+  h1
+    if request.isNew
+      | New request
+    else
+      | Edit request
+  form.form.form-horizontal(action=request.isNew ? '/requests' : "/requests/#{request._id}", method='post')
+    .control-group
+      label.control-label(for='position') position
+      div.controls
+        input.input-xlarge(type='text', name='position', value=request.position, id='position')
+    .control-group
+      label.control-label(for='title') Title
+      div.controls
+        input.input-xlarge(type='text', name='title', value=request.title, id='title')
+    .control-group
+      label.control-label(for='details') Details
+      div.controls
+        textarea.input-xlarge(name='details', id='details')= request.details
+    if !request.isNew
+      input(type='hidden', name='_method', value='put')
+    .control-group
+      .controls
+        button.btn.btn-primary(type='submit')
+          if request.isNew
+            | Create
+          else
+            | Update

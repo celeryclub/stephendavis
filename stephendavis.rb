@@ -12,12 +12,6 @@ require 'nokogiri'
 # require 'aws/s3'
 
 
-# TODO
-# ----------------------------
-# * New 'Projects' header image
-# * reload Last.fm dynamically
-# * Change from jQuery to RightJS? $(document).on('ready', function() {...});
-# * Add file upload capability (http://amazon.rubyforge.org/) (http://ididitmyway.heroku.com/past/2011/1/16/uploading_files_in_sinatra/)
 
 # Config
 # ----------------------------
@@ -25,12 +19,6 @@ set :slim, :pretty => true
 MenuItem = Struct.new(:path, :text, :description)
 before do
   @recent_posts = Post.all(:fields => [:slug, :title, :published], :order => [:published.desc], :limit => 3)
-  @menu_items = [
-    MenuItem.new('/','Home',''),
-    MenuItem.new('/blog','Blog','Read some pretty good articles.'),
-    MenuItem.new('/projects','Projects',"See what I've been up to."),
-    MenuItem.new('/about','About','Learn a little bit about me.')
-  ]
 end
 
 
@@ -135,20 +123,8 @@ end
 get('/css/app.css') { scss(:'assets/app') }
 get('/js/app.js') { coffee(:'assets/app') }
 
-get '/' do
-  @title = 'This is the website of Stephen Davis'
-  @newest_post = Post.first(:order => [:published.desc])
-  slim :index
-end
 
-get '/projects' do
-  @title = 'Projects'
-  slim :projects
-end
-get '/about' do
-  @title = 'About'
-  slim :about
-end
+
 get '/blog' do
   @title = 'Blog'
   @posts = Post.all(:order => [:published.desc])

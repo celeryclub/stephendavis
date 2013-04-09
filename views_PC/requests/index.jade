@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+  h1= title
+  table.table.table-striped.table-bordered
+    thead
+      tr
+        th
+        th Position
+        th Title
+        th Details
+        th Date
+        th
+        th
+        th
+    tbody.sortable(data-url='/requests/sort')
+      - for request in requests
+        tr(id="requests-#{request._id}")
+          td: span.handle &#9776;
+          td= request.position
+          td: strong= request.title
+          td= request.details
+          td= date(request.date)
+          td: a.btn.btn-small(href='/requests/#{request._id}/edit') Edit
+          td: a.btn.btn-small.btn-primary(href='/requests/#{request._id}') Show
+          td
+            form(action='/requests/#{request._id}', method='post')
+              input(type='hidden', name='_method', value='delete')
+              button.btn.btn-small.btn-danger Delete
+  a.btn(href='/requests/new') New request
