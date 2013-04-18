@@ -1,10 +1,7 @@
 express = require('express')
 # stylus = require('stylus')
 assets = require('connect-assets')
-
-# Controllers
-staticController = require('./controllers/staticController')
-# postsController = require('./controllers/postsController')
+markdown = require('markdown').markdown
 
 app = express()
 app.configure( ->
@@ -19,6 +16,24 @@ app.configure( ->
   app.use(assets({
     buildDir: './public'
   }))
+  app.use((req, res, next) ->
+    if (req.header('X-PJAX')) then req.pjax = true
+    res.renderPjax = (view, options, fn) ->
+      if (req.pjax)
+        view = "pjax/#{view}"
+      res.render(view, options, fn)
+    next()
+  )
+  # app.use((req, res, next) ->
+  #   if !req.pjax && !app.locals.recentPosts
+  #     Post.find().sort('published').limit(3).execFind((err, posts) ->
+  #       if (err)
+  #         return "Error in recent posts query. #{err}"
+  #       else
+  #         app.locals.recentPosts = posts
+  #         next()
+  #     )
+  # )
   # app.use(stylus.middleware({
   #   src: "#{__dirname}/assets"
   #   dest: "#{__dirname}/public"
@@ -40,6 +55,14 @@ app.configure( ->
   #   next()
   # )
 )
+
+# Models
+# models = require('./models/init')
+# Post = models.Post
+
+# Controllers
+staticController = require('./controllers/staticController')
+# postsController = require('./controllers/postsController')
 
 # View helpers
 app.locals({

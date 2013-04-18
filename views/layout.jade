@@ -11,23 +11,29 @@ html
   body
     .wrapper
       header.cf
-        a.logo(href='/') Stephen Davis
+        a.logo(href='/', data-pjax) Stephen Davis
         nav.main: ul
           - for menuItem in menuItems
-            li: a(href="#{menuItem.uri}")= menuItem.text
+            li: a(href="#{menuItem.uri}", data-pjax)= menuItem.text
             //- - if i == (@menu_items.count / 2).floor - 1
             //-   span.break: br
-        h1.page-title= title
       #main.cf
         //- / strong Title: #{title} / FP: #{request.path_info.split('/').last.gsub('-', ' ').capitalize}
-        .primary
+        .primary(data-pjax-container)
           block content
         .secondary.cf
           .widget.posts
-            h3.widget-title Recent Posts
-            ul
-              //- - @recent_posts.each do |post|
-              //-   li
+            //- h3.widget-title Recent Posts
+            //- strong= recentPosts
+            //- strong= call recentPosts
+            //- strong= typeof recentPosts
+            //- ul
+              //- - for post in recentPosts
+                //- li
+                  //- = post
+                  //- = post._id
+                  //- br
+                  = post.title
               //-     a(href=('/blog/'+post.slug)) = post.title
               //-     '
               //-     small.published #{post.published.strftime("%b %e")}

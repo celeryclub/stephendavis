@@ -1,0 +1,21 @@
+p Thanks for visiting.
+p I like programming and serving the Lord. I occasionally write about web development, music, and what's going on in my life.
+.tiles.cf
+  - for menuItem in menuItems
+    if menuItem.description
+      a.tile(href="#{menuItem.uri}", class="#{removeSlash(menuItem.uri)}", data-pjax='true')
+        .tile-background
+          if menuItem.uri == '/blog'
+            strong
+              //- - each val, key in latestPost
+              //-   - if(latestPost.hasOwnProperty(key))
+              //-     li= key + ": " + val
+              //- = latestPost
+              //- = latestPost._id
+              = latestPost.title
+            '
+            //- == truncate(strip_tags(markdown(@newest_post.body)), 60)
+            = latestPost.body
+        .tile-inner
+          h2.tile-title= menuItem.text
+          p= menuItem.description

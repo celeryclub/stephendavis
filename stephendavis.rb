@@ -13,14 +13,6 @@ require 'nokogiri'
 
 
 
-# Config
-# ----------------------------
-set :slim, :pretty => true
-MenuItem = Struct.new(:path, :text, :description)
-before do
-  @recent_posts = Post.all(:fields => [:slug, :title, :published], :order => [:published.desc], :limit => 3)
-end
-
 
 # Models
 # ----------------------------
@@ -42,55 +34,6 @@ class Post
   def slugize
     title.downcase.gsub(/\W/,'-').squeeze('-').chomp('-')
     # title.downcase.gsub(' ', '-').gsub(/\W/,'')
-  end
-  # Post.search(:query => params[:query], :fields => [:title, :body])
-  def self.search(params, options = {})
-    query = params[:query]
-    fields = params[:fields]
-    searchables = fields.map { |field| self.send(field.to_s) }
-    # self.all({:slug.not => 'home'}.merge(options))
-    posts = self.all(:order => [:published.desc])
-    # results = []
-    # posts.each do |post|
-      # results << post.body
-    # end
-    # posts.collect { |k, v| "#{k.title}=#{v} " }.join
-    w = []
-    # results = []
-    results = posts.select do |post|
-    # posts.each do |post|
-      # words = []
-      # post.body.split
-      # titles << post.title
-      # titles << post.title.split(' ')
-      # post.title.split(' ').each { |word| titles << word }
-
-      # post.title.split(' ').each { |word| words << word.downcase }
-      words = []
-      searchables.each do |field|
-        post.send(field.name).split(' ').each { |word| words << word.downcase.gsub(/\W/,'') }
-        # w << post.send(field.name)
-      end
-      # w << post.title.split(' ').map { |word| word.downcase }
-      w << words
-      # query.split('+').all? { |term| words.include?(term.downcase.gsub(/\W/,'')) }
-      query.split('+').all? { |term| words.any? { |word| word =~ /#{term.downcase.gsub(/\W/,'')}/ } }
-      # titles << words << query
-      # words.include?(query)
-      # if words.include?(query)
-        # results << post
-        # results << query
-      # end
-      # titles << words.include?(query).class
-      # titles << query.split('+')
-      # query.split('+').each do |term|
-        # titles << term
-      # end
-    end
-    results
-    # query.split('+')
-    # w
-    # searchables
   end
 end
 DataMapper.finalize

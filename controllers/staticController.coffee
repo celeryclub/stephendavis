@@ -1,13 +1,15 @@
+models = require('../models/init')
+
 exports.index = (req, res) ->
-  # Request.find().sort('position').execFind((err, post) ->
-    # if (err)
-      # res.end("Error in query. #{err}")
-    # else
+  models.post.findOne({}).sort('published').exec((err, post) ->
+    if (err)
+      res.end("Error in homepage query. #{err}")
+    else
       res.renderPjax('index', {
         title: 'This is the homepage'
-        # post: post
+        latestPost: post
       })
-  # )
+  )
 
 exports.projects = (req, res) ->
   res.renderPjax('projects', {
@@ -16,5 +18,6 @@ exports.projects = (req, res) ->
 
 exports.about = (req, res) ->
   res.renderPjax('about', {
+    layout: false
     title: 'About'
   })

@@ -2,6 +2,22 @@ $ ->
 
   # transition_speed = 300
 
+  $(document).pjax('a[data-pjax]', '[data-pjax-container]')
+
+  # $('[data-pjax-container]')
+    # .on('pjax:start', -> $(this).addClass('loading'))
+    # .on('pjax:end', -> $(this).removeClass('loading'))
+  # $(document).on('pjax:end', -> $('[data-pjax-container]').fadeIn(200))
+
+  # $('a[data-pjax]').pjax({
+  #   container: '[data-pjax-container]'
+  #   timeout: 5000
+  # })
+
+  # $(document).on('pjax:pjax:start', ->
+  #   console.log 'PJAXING!'
+  # )
+
   $('.btn.btn-danger').on('click', -> false unless confirm 'Are you sure?')
 
   $('.post').fitVids()

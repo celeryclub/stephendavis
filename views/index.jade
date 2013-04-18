@@ -1,18 +1,4 @@
 extends layout
 
 block content
-  p Thanks for visiting.
-  p I like programming and serving the Lord. I occasionally write about web development, music, and what's going on in my life.
-  .tiles.cf
-    - for menuItem in menuItems
-      if menuItem.description
-        a.tile(href="#{menuItem.uri}", class="#{removeSlash(menuItem.uri)}")
-          .tile-background
-            if menuItem.uri == '/blog'
-              //- strong
-              //-   = @newest_post.title
-              //- '
-              //- == truncate(strip_tags(markdown(@newest_post.body)), 60)
-          .tile-inner
-            h2.tile-title= menuItem.text
-            p= menuItem.description
+  include pjax/index
