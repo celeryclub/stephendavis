@@ -11,10 +11,10 @@ html
   body
     .wrapper
       header.cf
-        a.logo(href='/', data-pjax) Stephen Davis
+        != linkTo('/', 'Stephen Davis', 'logo')
         nav.main: ul
           - for menuItem in menuItems
-            li: a(href="#{menuItem.uri}", data-pjax)= menuItem.text
+            li!= linkTo(menuItem.uri, menuItem.text)
             //- - if i == (@menu_items.count / 2).floor - 1
             //-   span.break: br
       #main.cf

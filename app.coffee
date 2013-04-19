@@ -93,6 +93,11 @@ app.locals({
 #   # date: (date) ->
 #   #   d = new Date(date)
 #   #   d.toDateString()
+  linkTo: (uri, text, classes = '') ->
+    link = "<a href='#{uri}'"
+    if (uri.indexOf('http') < 0) then link += " data-pjax"
+    if (classes.length) then link += " class='#{classes}'"
+    link += ">#{text}</a>"
 });
 
 
