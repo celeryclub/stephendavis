@@ -6,14 +6,6 @@ require 'coffee-script'
 require 'rdiscount'
 require 'nokogiri'
 
-
-# TODO
-# ----------------------------
-# * New 'Projects' header image
-# * reload Last.fm dynamically
-# * Change from jQuery to RightJS? $(document).on('ready', function() {...});
-# * Add file upload capability (http://amazon.rubyforge.org/) (http://ididitmyway.heroku.com/past/2011/1/16/uploading_files_in_sinatra/)
-
 # Config
 # ----------------------------
 set :slim, :pretty => true
@@ -27,7 +19,6 @@ before do
     MenuItem.new('/about', 'About', 'Learn a little bit about me.')
   ]
 end
-
 
 # Models
 # ----------------------------
@@ -46,7 +37,6 @@ class Post
 end
 DataMapper.finalize
 DataMapper.auto_upgrade!
-
 
 # Helpers
 # ----------------------------
@@ -67,7 +57,6 @@ helpers do
     end
   end
 end
-
 
 # Routes
 # ----------------------------
