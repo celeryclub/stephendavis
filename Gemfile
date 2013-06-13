@@ -4,15 +4,12 @@ ruby '2.0.0'
 
 gem 'sinatra'
 gem 'data_mapper'
-# gem 'dm-ferret-adapter' #, :require => 'dm_ferret_adapter'
-# gem 'dm-is-searchable' #, :require => 'dm_is_searchable'
-gem 'slim'
 gem 'thin'
+gem 'slim'
 gem 'sass'
 gem 'coffee-script'
 gem 'rdiscount'
 gem 'nokogiri'
-# gem 'aws-s3', :require => 'aws/s3'
 gem 'rack-rewrite', :require => 'rack/rewrite'
 
 group :production do
