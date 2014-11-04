@@ -1,0 +1,65 @@
+==================================================================
+https://keybase.io/stephendavis89
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://stephendavis.im
+  * I am stephendavis89 (https://keybase.io/stephendavis89) on keybase.
+  * I have a public key with fingerprint 80B4 2151 67CC CDBF 691E  7923 601A 94CA ECB3 75F7
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "80b4215167cccdbf691e7923601a94caecb375f7",
+            "host": "keybase.io",
+            "key_id": "601a94caecb375f7",
+            "uid": "49ff2ff1d4987bacd7cf89549a536900",
+            "username": "stephendavis89"
+        },
+        "service": {
+            "hostname": "stephendavis.im",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1415133038,
+    "expire_in": 157680000,
+    "prev": "1b4de97238c774f755a9e70318f58aefb4e24ef676d8b8253ed04487845c3037",
+    "seqno": 4,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v1.1.3
+Comment: https://keybase.io/crypto
+
+yMHkAnicbZFdSBRRFMd3s1paEhSLiEJkKGLLdL7vzGog9vWgkJ9ksrnOx73roM6s
+s7OrYkZQUG+KEYFK9BCBgRmxhpmFiVGQDyWCi7iUlh+FmpBGaw92R+rN+3K55/zO
+//zvOaPJSQ63M7bo0p5ln1hyvh/eCDvKLgG9hZANtZnwthC1cOtCmh6AZtDUdIvw
+EgIpszTFUTxQFEWVES9SEIg0w5OUJLKKBBWZARwCRCZRY4TsCiwjSyGYpRk4hh9+
+TcXRbfjwVoIVEaIRolRWFIAsKSpQkCByrChxDC+SpA2GoKlL9RDTIQsGa6CuShEt
+JIhEayaBcxFNgbZz28A2XJZWj0WCpmEZilGHkzWWFfTatVZz0IYboez/J+OXNV3F
+A8AFEWiGNEMnvBQmFUuzdSkWj4JhSEbIJGBTUDOhX7MJDvACiY/dBkawJCWzKhQB
+zQgKACwCHCeJEJAMJSBOkCCSWUizEPGAVwVZoDkGqiTLCkBgOQXL2+MJwQbdILws
+tikF7C9pAV2ywiYkWkeGfTsdTrdj964d9god7j0p/xc7NOvaLFlIc0Xj69GNaEXd
+4dvpqWl5fVfefLszu7/3WJj2xLumSskv6DvNFX4u8L7MnZIqL+f2VHn4JxNku7mR
+WCwLll/vaXz0cznjwxqZ/jUj565ntTe2ftwoPFPavbS2XHSynZvumPuUMjBQc+Ne
+0pGGdvna0dmOOV9l/2Rtf5V4IdBfd6BN/9N5P8cx9rotcdozOV6c7TqkPI6vvhh9
+uNKV8ntwrHq+Ky85Uvzr4MKtqFC/UuFc7bEGx8kfTTdznG9j55NyWyIPyuL5eefy
++8763i250XJBycq++YnNzumhROOrwPOZHVcTT10j1bHUomh5Q/fFmY+nMnxD4am9
+aegv6Scdxg==
+=Fyws
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/stephendavis89
+
+==================================================================
