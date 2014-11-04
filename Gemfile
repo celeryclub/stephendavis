@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 ruby '2.1.4'
 
-gem 'sinatra'
+gem 'sinatra', '1.4.5'
 gem 'data_mapper'
 gem 'thin'
 gem 'slim'
